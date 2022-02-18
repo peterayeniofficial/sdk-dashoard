@@ -1,10 +1,11 @@
 import React from 'react';
+import { Container, Heading } from '@chakra-ui/react';
 
 function App() {
   return (
-    <div>
-      <h1>SDK Dashboard</h1>
-    </div>
+    <Container>
+      <Heading>SDK Dashboard</Heading>
+    </Container>
   );
 }
 
