@@ -28,6 +28,10 @@ export default function Dashboard() {
   console.log('sdkData', sdkData);
   console.log('unSdkData', unSdkData);
 
+  const { installedSdks, latestUpdatedDate } = sdkData || [];
+  const { uninstalledSdks, latestUpdatedDate: unInstalledLatestUpdatedDate } =
+    unSdkData || [];
+
   return (
     <Tabs variant="unstyled">
       <TabList>
@@ -36,11 +40,17 @@ export default function Dashboard() {
       </TabList>
       <TabPanels>
         <TabPanel>
-          <Header />
+          <Header
+            totalSdks={installedSdks?.length}
+            latestUpdatedDate={latestUpdatedDate}
+          />
           <Content />
         </TabPanel>
         <TabPanel>
-          <Header />
+          <Header
+            totalSdks={uninstalledSdks?.length}
+            latestUpdatedDate={unInstalledLatestUpdatedDate}
+          />
         </TabPanel>
       </TabPanels>
     </Tabs>
