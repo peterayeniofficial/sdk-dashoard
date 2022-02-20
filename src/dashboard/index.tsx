@@ -18,8 +18,6 @@ export default function Dashboard() {
     error: unSdkError,
   } = useQuery('unInstalledSdk', getUnInstalledSdks);
 
-  console.log('unSdkData', unSdkData);
-
   const { installedSdks, latestUpdatedDate } = sdkData || [];
   const { uninstalledSdks, latestUpdatedDate: unInstalledLatestUpdatedDate } =
     unSdkData || [];

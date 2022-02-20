@@ -1,6 +1,6 @@
 import React from 'react';
-
 import { Box, SimpleGrid, Stat, StatLabel, StatNumber } from '@chakra-ui/react';
+import { getYearAgo } from '../utils/getYearAgo';
 
 interface SdkData {
   name: string;
@@ -23,7 +23,6 @@ let cats = [
   'OCR',
   'UI',
   'App Performance Management',
-  'Analytics',
 ];
 
 export default function Content({ sdksData }: ContentProps) {
@@ -47,7 +46,7 @@ export default function Content({ sdksData }: ContentProps) {
               ?.filter((sdk) => sdk.categories[0] === cat)
               .map((data) => (
                 <StatNumber fontWeight={'sm'}>
-                  {data.name} {data.lastSeenDate}
+                  {data.name}, {getYearAgo(data.lastSeenDate)}
                 </StatNumber>
               ))}
           </Stat>
