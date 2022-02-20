@@ -1,17 +1,8 @@
 import React from 'react';
 import { useQuery } from 'react-query';
-import {
-  Box,
-  Stack,
-  Tab,
-  TabList,
-  TabPanel,
-  TabPanels,
-  Tabs,
-} from '@chakra-ui/react';
+import { Tab, TabList, TabPanel, TabPanels, Tabs } from '@chakra-ui/react';
 import Header from './Header';
 import Content from './Content';
-import LoadSDKButton from '../components/Button/index';
 import { getInstalledSdks, getUnInstalledSdks } from '../services/api';
 
 export default function Dashboard() {
@@ -20,12 +11,13 @@ export default function Dashboard() {
     isLoading: sdkLoading,
     error: sdkError,
   } = useQuery('installedSdk', getInstalledSdks);
+
   const {
     data: unSdkData,
     isLoading: unSdkLoading,
     error: unSdkError,
   } = useQuery('unInstalledSdk', getUnInstalledSdks);
-  console.log('sdkData', sdkData);
+
   console.log('unSdkData', unSdkData);
 
   const { installedSdks, latestUpdatedDate } = sdkData || [];
@@ -43,14 +35,22 @@ export default function Dashboard() {
           <Header
             totalSdks={installedSdks?.length}
             latestUpdatedDate={latestUpdatedDate}
+            status={'Installed'}
           />
-          <Content />
+          {sdkLoading && <div>Loading...</div>}
+          {sdkError && <div>Error...</div>}
+
+          <Content sdksData={installedSdks} />
         </TabPanel>
         <TabPanel>
           <Header
             totalSdks={uninstalledSdks?.length}
             latestUpdatedDate={unInstalledLatestUpdatedDate}
+            status={'Uninstalled'}
           />
+          {unSdkLoading && <div>Loading...</div>}
+          {unSdkError && <div>Error...</div>}
+          <Content sdksData={uninstalledSdks} />
         </TabPanel>
       </TabPanels>
     </Tabs>
