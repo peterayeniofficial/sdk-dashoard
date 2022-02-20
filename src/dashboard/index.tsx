@@ -1,4 +1,5 @@
 import React from 'react';
+import { useQuery } from 'react-query';
 import {
   Box,
   Stack,
@@ -11,8 +12,22 @@ import {
 import Header from './Header';
 import Content from './Content';
 import LoadSDKButton from '../components/Button/index';
+import { getInstalledSdks, getUnInstalledSdks } from '../services/api';
 
 export default function Dashboard() {
+  const {
+    data: sdkData,
+    isLoading: sdkLoading,
+    error: sdkError,
+  } = useQuery('installedSdk', getInstalledSdks);
+  const {
+    data: unSdkData,
+    isLoading: unSdkLoading,
+    error: unSdkError,
+  } = useQuery('unInstalledSdk', getUnInstalledSdks);
+  console.log('sdkData', sdkData);
+  console.log('unSdkData', unSdkData);
+
   return (
     <Tabs variant="unstyled">
       <TabList>
