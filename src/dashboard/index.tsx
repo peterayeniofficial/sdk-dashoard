@@ -22,6 +22,7 @@ export default function Dashboard() {
       <TabPanels>
         <TabPanel>
           <Header />
+          <Content />
         </TabPanel>
         <TabPanel>
           <Header />
