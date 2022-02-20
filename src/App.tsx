@@ -4,7 +4,7 @@ import Dashboard from './dashboard';
 
 function App() {
   return (
-    <Container>
+    <Container maxW={'5xl'}>
       <Heading>SDK Dashboard</Heading>
       <Dashboard />
     </Container>
