@@ -13,23 +13,14 @@ interface ContentProps {
   sdksData: SdkData[];
 }
 
-let cats = [
-  'Backend',
-  'Utilities',
-  'Payments',
-  'App Platform',
-  'Social',
-  'Location',
-  'OCR',
-  'UI',
-  'App Performance Management',
-];
-
 export default function Content({ sdksData }: ContentProps) {
+  const categories = sdksData.map((sdk) => sdk.categories[0]);
+  const uniqueCategories = Array.from(new Set(categories));
+
   return (
     <Box maxW="7xl" mx={'auto'} pt={5} px={{ base: 2, sm: 12, md: 17 }}>
       <SimpleGrid columns={{ base: 1, md: 3 }} spacing={{ base: 5, lg: 8 }}>
-        {cats.map((cat) => (
+        {uniqueCategories.map((cat) => (
           <Stat
             px={{ base: 4, md: 8 }}
             py={'5'}
