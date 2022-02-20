@@ -1,18 +1,32 @@
 import React from 'react';
-import { Box, Stack } from '@chakra-ui/react';
+import {
+  Box,
+  Stack,
+  Tab,
+  TabList,
+  TabPanel,
+  TabPanels,
+  Tabs,
+} from '@chakra-ui/react';
 import Header from './Header';
 import Content from './Content';
 import LoadSDKButton from '../components/Button/index';
 
 export default function Dashboard() {
   return (
-    <Box>
-      <Stack spacing={6} direction={'row'}>
-        <LoadSDKButton>Installed</LoadSDKButton>
-        <LoadSDKButton>Uninstalled</LoadSDKButton>
-      </Stack>
-      <Header />
-      <Content />
-    </Box>
+    <Tabs variant="unstyled">
+      <TabList>
+        <Tab _selected={{ color: 'white', bg: 'blue.500' }}>Installed</Tab>
+        <Tab _selected={{ color: 'white', bg: 'green.400' }}>Uninstalled</Tab>
+      </TabList>
+      <TabPanels>
+        <TabPanel>
+          <p>Installed SDKs</p>
+        </TabPanel>
+        <TabPanel>
+          <p>Uninstalled SDKs</p>
+        </TabPanel>
+      </TabPanels>
+    </Tabs>
   );
 }
