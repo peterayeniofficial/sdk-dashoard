@@ -21,10 +21,10 @@ export default function Dashboard() {
       </TabList>
       <TabPanels>
         <TabPanel>
-          <p>Installed SDKs</p>
+          <Header />
         </TabPanel>
         <TabPanel>
-          <p>Uninstalled SDKs</p>
+          <Header />
         </TabPanel>
       </TabPanels>
     </Tabs>
