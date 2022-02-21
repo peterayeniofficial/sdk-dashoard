@@ -26,7 +26,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "commit": "git-cz"
+    "commit": "git-cz",
+    "mock-server": "npx json-server ./src/db/data.json --port 4000",
+    "dev": "yarn run mock-server & react-scripts start"
   },
   "eslintConfig": {
     "extends": [
